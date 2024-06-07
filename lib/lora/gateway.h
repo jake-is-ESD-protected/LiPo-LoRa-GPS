@@ -1,29 +1,29 @@
 #ifndef _GATEWAY_H_
 #define _GATEWAY_H_
 
-//define the pins used by the LoRa transceiver module
-#define SCK 5
-#define MISO 19
-#define MOSI 27
-#define SS 18
-#define RST 14
-#define DIO0 26
-
-//433E6 for Asia
-//866E6 for Europe
-//915E6 for North America
-#define BAND 866E6
-
-//OLED pins
-#define OLED_SDA 4
-#define OLED_SCL 15 
-#define OLED_RST 16
-#define SCREEN_WIDTH 128 // OLED display width, in pixels
-#define SCREEN_HEIGHT 64 // OLED display height, in pixels
+#define RF_FREQUENCY                                868000000 // Hz
+#define TX_OUTPUT_POWER                             14        // dBm
+#define LORA_BANDWIDTH                              0         // [0: 125 kHz,
+                                                              //  1: 250 kHz,
+                                                              //  2: 500 kHz,
+                                                              //  3: Reserved]
+#define LORA_SPREADING_FACTOR                       7         // [SF7..SF12]
+#define LORA_CODINGRATE                             1         // [1: 4/5,
+                                                              //  2: 4/6,
+                                                              //  3: 4/7,
+                                                              //  4: 4/8]
+#define LORA_PREAMBLE_LENGTH                        8         // Same for Tx and Rx
+#define LORA_SYMBOL_TIMEOUT                         0         // Symbols
+#define LORA_FIX_LENGTH_PAYLOAD_ON                  false
+#define LORA_IQ_INVERSION_ON                        false
+#define RX_TIMEOUT_VALUE                            1000
+#define BUFFER_SIZE                                 30 // Define the payload size here
 
 void gateway_init();
 
 void gateway_run();
+
+void OnRxDone( uint8_t *payload, uint16_t size, int16_t rssi, int8_t snr);
 
 #endif // _GATEWAY_H_
 
