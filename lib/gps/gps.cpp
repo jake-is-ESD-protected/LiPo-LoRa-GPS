@@ -19,11 +19,13 @@ uint32_t gps_get_lon(){
         
         lon = gps.location.lng();
         lat = gps.location.lat();
-        // Serial.print("Lon=");
-        // Serial.print(lon, 6);
-        // Serial.print("Lat=");
-        // Serial.print(lat, 6);
-        Serial.write(in);
+        Serial.print("Lon=");
+        Serial.print(gps.location.lng(), 6);
+        Serial.print("\n");
+        Serial.print("Lat=");
+        Serial.print(gps.location.lat(), 6);
+        Serial.print("\n");
+        // Serial.write(in);
     }
     return lon;
 }
