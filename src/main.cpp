@@ -6,10 +6,13 @@
 #include "gateway.h"
 #endif
 
+#ifdef ARDUINO_AVR_LEONARDO
+GPS gps(10);
+#endif
 
 void setup(){
   #ifdef ARDUINO_AVR_LEONARDO
-  gps_init();
+  gps.init();
   #endif
   #ifdef WIFI_LORA_32_V3
   gateway_init();
@@ -18,8 +21,12 @@ void setup(){
 
 void loop(){
   #ifdef ARDUINO_AVR_LEONARDO
-  uint32_t longitude = gps_get_lon();
-  uint32_t latitude = gps_get_lat();
+  uint32_t lat = gps.get_lat();
+  uint32_t lng = gps.get_lng();
+  delay(500);
+  #endif
+  #ifdef WIFI_LORA_32_V3
+  gateway_run();
   #endif
   #ifdef WIFI_LORA_32_V3
   gateway_run();
