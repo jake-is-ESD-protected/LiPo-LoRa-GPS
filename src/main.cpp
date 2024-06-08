@@ -1,3 +1,4 @@
+#include "LoRaWan_APP.h"
 #include <Arduino.h>
 #ifdef APP_LORA_SEND
 #include "gps.h"
@@ -8,6 +9,9 @@ GPS gps(10);
 #endif
 
 void setup(){
+  Serial.begin(115200);
+  Mcu.begin(HELTEC_BOARD,SLOW_CLK_TPYE);
+  
   #ifdef APP_LORA_SEND
   gps.init();
   #endif

@@ -13,8 +13,6 @@ int16_t rssi,rxSize;
 bool lora_idle = true;
 
 void gateway_init() {
-    Serial.begin(115200);
-    Mcu.begin(HELTEC_BOARD,SLOW_CLK_TPYE);
     txNumber=0;
     rssi=0;
     RadioEvents.RxDone = OnRxDone;
