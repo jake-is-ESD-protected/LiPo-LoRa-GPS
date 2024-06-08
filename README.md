@@ -16,6 +16,7 @@ UHH24 hackathon
     - connect LoRa module to Leonardo/Nano
     - send data to gateway
     - check gateway
+- fix that fucking merge >:(
 - combine LoRa and GPS driver code and modules
-- Power stuff
-- TBD ... 
+- sleep mode (e.g. timer IR)
+- pwr

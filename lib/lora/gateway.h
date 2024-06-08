@@ -1,6 +1,8 @@
 #ifndef _GATEWAY_H_
 #define _GATEWAY_H_
 
+#ifdef APP_LORA_RECEIVE
+
 #define RF_FREQUENCY                                868000000 // Hz
 #define TX_OUTPUT_POWER                             14        // dBm
 #define LORA_BANDWIDTH                              0         // [0: 125 kHz,
@@ -24,6 +26,8 @@ void gateway_init();
 void gateway_run();
 
 void OnRxDone( uint8_t *payload, uint16_t size, int16_t rssi, int8_t snr);
+
+#endif // APP_LORA_RECEIVE
 
 #endif // _GATEWAY_H_
 

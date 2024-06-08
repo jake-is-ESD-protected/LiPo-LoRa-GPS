@@ -1,3 +1,5 @@
+#ifdef APP_LORA_RECEIVE
+
 #include "LoRaWan_APP.h"
 #include "Arduino.h"
 #include "gateway.h"
@@ -46,3 +48,5 @@ void OnRxDone( uint8_t *payload, uint16_t size, int16_t rssi, int8_t snr )
     Serial.printf("\r\nreceived packet \"%s\" with rssi %d , length %d\r\n",rxpacket,rssi,rxSize);
     lora_idle = true;
 }
+
+#endif

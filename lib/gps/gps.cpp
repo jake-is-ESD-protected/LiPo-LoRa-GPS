@@ -1,3 +1,5 @@
+#ifdef APP_LORA_SEND
+
 #include "gps.h"
 
 GPS::GPS(int buffer_length) : buffer_length(buffer_length), buffer_index(0), buffer_count(0) {
@@ -71,3 +73,5 @@ uint32_t GPS::get_lat() {
     Serial.print("\n");
     return lat;
 }
+
+#endif

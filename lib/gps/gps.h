@@ -1,6 +1,8 @@
 #ifndef GPS_H
 #define GPS_H
 
+#ifdef APP_LORA_SEND
+
 #include <TinyGPS++.h>
 #include <Arduino.h>
 
@@ -24,5 +26,5 @@ private:
 
     void add_to_buffer(double* buffer, double value);
 };
-
+#endif // APP_LORA_SEND
 #endif // GPS_H
