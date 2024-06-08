@@ -17,7 +17,6 @@ GPS::~GPS() {
 }
 
 void GPS::init() {
-    Serial.begin(115200);
     Serial1.begin(9600);
 }
 
@@ -46,13 +45,10 @@ uint32_t GPS::get_lng() {
         if (gps.location.isValid()) {
             add_to_buffer(lng_buffer, dlng);
             double avg_lng = get_average(lng_buffer, buffer_count);
-            lng = (uint32_t)(avg_lng * FAC_1_000_000);
+            lng = (uint32_t)(avg_lng * CONV_CONST);
 
         }
     }
-    Serial.print("Filtered Lng=");
-    Serial.print(lng, 6);
-    Serial.print("\n");
     return lng;
 }
 
@@ -68,9 +64,6 @@ uint32_t GPS::get_lat() {
             lat = (uint32_t)(avg_lat * FAC_1_000_000);
         }
     }
-    Serial.print("Filtered Lat=");
-    Serial.print(lat, 6);
-    Serial.print("\n");
     return lat;
 }
 
